@@ -1,0 +1,51 @@
+{
+  "name": "functional",
+  "version": "0.0.1",
+  "description": "A collection of functional programming techniques in js/ts",
+  "main": "index.js",
+  "scripts": {
+    "compile:watch": "tsc --watch",
+    "compile": "rimraf dist/* && tsc",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickmed/functional-js.git"
+  },
+  "keywords": [
+    "fp", "js", "javascript", "typescript"
+  ],
+  "author": "Ricardo Medina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rickmed/functional-js/issues"
+  },
+  "homepage": "https://github.com/rickmed/functional-js#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^20.0.2",
+    "@types/ramda": "^0.24.2",
+    "jest": "^20.0.4",
+    "jsverify": "^0.8.2",
+    "ramda": "^0.24.1",
+    "rimraf": "^2.6.1",
+    "ts-jest": "^20.0.6",
+    "typescript": "^2.4.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js|jsx)?$",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "dist"
+    ]
+  }
+}
