@@ -7,7 +7,14 @@
     "compile:watch": "tsc --watch",
     "compile": "rimraf dist/* && tsc",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.+(ts|js)": [
+      "prettier --write --no-bracket-spacing --no-semi",
+      "jest --bail --findRelatedTests",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
