@@ -11,24 +11,24 @@ export type FunctorCtor<T, A> = (a: A) => Functor<T, A>
 
 export function testFunctors<T, A>(
   Fname: string,
-  ...ctrs: (FunctorCtor<T, A> | Functor<T, A>)[]
+  ...ctrs: FunctorCtor<T, A>[]
 ): void {
-  for (let Functor of ctrs) {
-    const name = typeof Functor === "function" ? Functor.name : Functor._ctor
-
+  for (let FunctorCtor of ctrs) {
     // same as it(...)
-    jsc.property(name + "'s Identity", anyArb, any => {
-      const Fa = typeof Functor === "function" ? Functor(any) : Functor
+    jsc.property(FunctorCtor.name + "'s Identity", anyArb, any => {
+      const Fa =
+        typeof FunctorCtor === "function" ? FunctorCtor(any) : FunctorCtor
       return R.equals(Fa.map(id), Fa)
     })
 
     jsc.property(
-      name + "'s Composition",
+      FunctorCtor.name + "'s Composition",
       jsc.bool,
       "bool -> string",
       "string -> number",
       (bool: A, g: (a: A) => string, f: (a: string) => number) => {
-        const Fa = typeof Functor === "function" ? Functor(bool) : Functor
+        const Fa =
+          typeof FunctorCtor === "function" ? FunctorCtor(bool) : FunctorCtor
         return R.equals(Fa.map(g).map(f), Fa.map(x => f(g(x))))
       }
     )
