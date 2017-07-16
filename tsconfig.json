@@ -4,6 +4,7 @@
     "module": "commonjs",
     "declaration": true,
     "strict": true,
+    "pretty": true,
     "outDir": "./dist",
     "lib": [
       "es2015", "dom"
